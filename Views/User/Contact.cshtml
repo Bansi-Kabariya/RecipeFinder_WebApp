@@ -1,0 +1,172 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "Contact Us";
+}
+
+<style>
+    /* Header Section */
+    .contact-hero {
+        background: linear-gradient(45deg, #d32f2f 30%, #ffc107 100%);
+        color: white;
+        padding: 80px 0;
+        border-bottom: 8px solid #ffc107;
+    }
+
+    /* Contact Cards */
+    .contact-card {
+        border: none;
+        border-top: 5px solid #d32f2f;
+        transition: all 0.3s ease;
+        background: #fff;
+    }
+
+        .contact-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1) !important;
+            border-top-color: #ffc107;
+        }
+
+    .icon-box {
+        width: 60px;
+        height: 60px;
+        background: #fff3cd;
+        color: #d32f2f;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 15px;
+        margin-bottom: 20px;
+        font-size: 1.8rem;
+    }
+
+    /* Social Links */
+    .social-btn {
+        width: 45px;
+        height: 45px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: #f8f9fa;
+        color: #d32f2f;
+        margin: 0 5px;
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+        .social-btn:hover {
+            background: #d32f2f;
+            color: #fff;
+        }
+</style>
+
+<div class="contact-hero text-center shadow">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Let's <span class="text-dark">Connect</span></h1>
+        <p class="lead fs-4">Have questions about QuickCook? We're here to help!</p>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-12">
+        <div class="card border-0 shadow-lg rounded-4 overflow-hidden">
+            <div class="row g-0">
+                <div class="col-lg-7 p-5">
+                    <h2 class="fw-bold mb-4">Send Us a <span class="text-danger">Message</span></h2>
+                    <form asp-controller="User" asp-action="SendContact" method="post">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Full Name</label>
+                                <input type="text" class="form-control rounded-pill p-2" placeholder="John Doe" required />
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label class="form-label">Email Address</label>
+                                <input type="email" class="form-control rounded-pill p-2" placeholder="john@example.com" required />
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Subject</label>
+                            <select class="form-select rounded-pill p-2">
+                                <option>General Inquiry</option>
+                                <option>Technical Support</option>
+                                <option>Recipe Suggestion</option>
+                                <option>Partnership/Collaboration</option>
+                            </select>
+                        </div>
+                        <div class="mb-4">
+                            <label class="form-label">Your Message</label>
+                            <textarea class="form-control rounded-4 p-3" rows="4" placeholder="How can we help you today?"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-danger btn-lg rounded-pill px-5 shadow">Send Message</button>
+                    </form>
+                </div>
+
+                <div class="col-lg-5 bg-warning p-5 d-flex flex-column justify-content-center text-dark">
+                    <h3 class="fw-bold mb-3">We Value Your Feedback!</h3>
+                    <p>Our team at <strong>QuickCook</strong> aims to reply to all inquiries within 24 hours. Your suggestions help us make recipe discovery better for everyone.</p>
+                    <div class="mt-4">
+                        <i class="bi bi-quote display-1 opacity-25"></i>
+                        <p class="fst-italic fs-5">"Cooking is a craft, but sharing it is an art."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container my-5 py-4">
+    <div class="row g-4 justify-content-center">
+        <div class="col-md-4">
+            <div class="card contact-card h-100 p-4 shadow-sm text-center">
+                <div class="icon-box mx-auto"><i class="bi bi-geo-alt-fill"></i></div>
+                <h4 class="fw-bold">Our Location</h4>
+                <p class="text-muted">123 Culinary Drive, Foodie City,<br>Gujarat, India</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card contact-card h-100 p-4 shadow-sm text-center">
+                <div class="icon-box mx-auto"><i class="bi bi-envelope-heart-fill"></i></div>
+                <h4 class="fw-bold">Email Us</h4>
+                <p class="text-muted">General: info@quickcook.com<br>Support: support@quickcook.com</p>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card contact-card h-100 p-4 shadow-sm text-center">
+                <div class="icon-box mx-auto"><i class="bi bi-telephone-inbound-fill"></i></div>
+                <h4 class="fw-bold">Call Us</h4>
+                <p class="text-muted">Mon-Fri: 9am - 6pm<br>+91 98765 43210</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-5 pt-5 align-items-center">
+        <div class="col-lg-6">
+            <h2 class="fw-bold text-danger">Why Reach Out to <span class="text-warning">Us?</span></h2>
+            <p class="text-muted fs-5 mt-3">
+                We are constantly looking for ways to improve the <strong>QuickCook</strong> experience. Whether you're a developer wanting to collaborate or a user with a new recipe idea, we value your input.
+            </p>
+            <ul class="list-unstyled mt-4">
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Fast response within 24 hours</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Technical support for recipe uploads</li>
+                <li class="mb-3"><i class="bi bi-check-circle-fill text-success me-2"></i> Feedback and suggestions portal</li>
+            </ul>
+        </div>
+        <div class="col-lg-6">
+            <div class="bg-light p-5 rounded-4 border-start border-5 border-warning shadow-sm">
+                <h3 class="fw-bold mb-4">Follow Our Journey</h3>
+                <p class="text-muted mb-4">Stay updated with the latest recipes and features by following us on social media.</p>
+                <div class="d-flex">
+                    <a href="#" class="social-btn shadow-sm"><i class="bi bi-facebook"></i></a>
+                    <a href="#" class="social-btn shadow-sm"><i class="bi bi-instagram"></i></a>
+                    <a href="#" class="social-btn shadow-sm"><i class="bi bi-twitter-x"></i></a>
+                    <a href="#" class="social-btn shadow-sm"><i class="bi bi-linkedin"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

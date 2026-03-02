@@ -3,47 +3,154 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - RecipeFinder_WebApp</title>
+    <title>@ViewData["Title"] - QuickCook</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/RecipeFinder_WebApp.styles.css" asp-append-version="true" />
+    <style>
+        /* Custom Theme Styles */
+        .profile-circle {
+            width: 40px;
+            height: 40px;
+            background-color: #ffc107; /* Yellow */
+            color: #d32f2f; /* Red */
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            text-decoration: none;
+            border: 2px solid white;
+            transition: 0.3s;
+        }
+
+            .profile-circle:hover {
+                background-color: white;
+                color: #d32f2f;
+                transform: scale(1.1);
+            }
+
+        .dropdown-item:hover {
+            background-color: #ffc107;
+            color: #d32f2f;
+            font-weight: bold;
+        }
+
+        .navbar-brand:hover {
+            color: white !important;
+        }
+    </style>
 </head>
 <body>
     <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-danger border-bottom border-warning border-3 shadow-sm mb-3">
             <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">RecipeFinder_WebApp</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
+                <a class="navbar-brand fw-bold text-warning fs-3" asp-controller="Home" asp-action="Index">
+                    <i class="bi bi-egg-fried"></i> QuickCook
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent">
                     <span class="navbar-toggler-icon"></span>
                 </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
+
+                <div class="collapse navbar-collapse" id="navbarContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                            <a class="nav-link text-white fw-semibold" asp-controller="User" asp-action="Index">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+                            <a class="nav-link text-white fw-semibold" asp-controller="User" asp-action="About">About Us</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-white fw-semibold" asp-controller="User" asp-action="Contact">Contact Us</a>
+                        </li>
+
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle text-white fw-semibold" href="#" id="categoryDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Categories
+                            </a>
+                            <ul class="dropdown-menu border-warning border-2 shadow" aria-labelledby="categoryDropdown">
+                                <li><a class="dropdown-item" asp-controller="Recipe" asp-action="Category" asp-route-id="Breakfast"><i class="bi bi-egg-fried text-danger"></i> Breakfast</a></li>
+                                <li><a class="dropdown-item" asp-controller="Recipe" asp-action="Category" asp-route-id="Lunch"><i class="bi bi-sun text-danger"></i> Lunch</a></li>
+                                <li><a class="dropdown-item" asp-controller="Recipe" asp-action="Category" asp-route-id="Dinner"><i class="bi bi-moon-stars text-danger"></i> Dinner</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" asp-controller="Recipe" asp-action="Category" asp-route-id="Desserts"><i class="bi bi-cake2 text-danger"></i> Desserts</a></li>
+                                <li><a class="dropdown-item" asp-controller="Recipe" asp-action="Category" asp-route-id="Spicy"><i class="bi bi-fire text-danger"></i> Spicy Specials</a></li>
+                            </ul>
                         </li>
                     </ul>
+
+                    <form class="d-flex mx-auto col-lg-4 mb-2 mb-lg-0" asp-controller="Recipe" asp-action="Search" method="get">
+                        <div class="input-group">
+                            <input class="form-control border-warning shadow-sm" type="search" name="query"
+                                   placeholder="Search recipes or ingredients..." aria-label="Search">
+                            <button class="btn btn-warning text-danger shadow-sm" type="submit">
+                                <i class="bi bi-search"></i>
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="d-flex align-items-center ms-lg-3">
+                        <a class="btn btn-warning text-danger fw-bold px-4 me-3 rounded-pill shadow-sm"
+                           asp-controller="Admin" asp-action="Index">
+                            <i class="bi bi-speedometer2 me-1"></i> Admin
+                        </a>
+
+                        <a href="#" class="profile-circle shadow-sm" title="My Profile">
+                            <i class="bi bi-person-fill"></i>
+                        </a>
+                    </div>
                 </div>
             </div>
         </nav>
     </header>
-    <div class="container">
-        <main role="main" class="pb-3">
+
+    <div class="container-fluid p-0">
+        <main role="main">
             @RenderBody()
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
+    <footer class="border-top footer text-white bg-dark mt-5 pt-5 pb-4">
         <div class="container">
-            &copy; 2026 - RecipeFinder_WebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            <div class="row align-items-center">
+                <div class="col-md-6 text-center text-md-start mb-4 mb-md-0">
+                    <h3 class="fw-bold text-warning mb-2">
+                        <i class="bi bi-egg-fried"></i> QuickCook Recipe Finder
+                    </h3>
+                    <p class="text-white-50 mb-0">
+                        Providing the best recipes for every kitchen since 2026. <br />
+                        Discover thousands of recipes by name or ingredients.
+                    </p>
+                </div>
+
+                <div class="col-md-6 text-center text-md-end">
+                    <div class="mb-3">
+                        <a asp-controller="User" asp-action="Index" class="text-white-50 text-decoration-none me-3">Home</a>
+                        <a asp-controller="User" asp-action="About" class="text-white-50 text-decoration-none me-3">About</a>
+                        <a asp-controller="User" asp-action="Contact" class="text-white-50 text-decoration-none">Contact</a>
+                    </div>
+                    <div class="fs-5">
+                        <a href="#" class="text-warning me-3"><i class="bi bi-facebook"></i></a>
+                        <a href="#" class="text-warning me-3"><i class="bi bi-instagram"></i></a>
+                        <a href="#" class="text-warning"><i class="bi bi-twitter-x"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <hr class="border-warning my-4 opacity-25">
+
+            <div class="row">
+                <div class="col-12 text-center text-white-50 small">
+                    &copy; 2026 - <span class="text-warning fw-bold">QuickCook</span> Recipe Finder -
+                    <a asp-controller="Home" asp-action="Privacy" class="text-white-50 text-decoration-none ms-2">Privacy Policy</a>
+                </div>
+            </div>
         </div>
     </footer>
+
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>

@@ -1,0 +1,166 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewData["Title"] = "About Us";
+}
+
+<style>
+    /* Hero Section with Parallax effect */
+    .about-header {
+        background: linear-gradient(rgba(211, 47, 47, 0.85), rgba(211, 47, 47, 0.85)), url('https://images.unsplash.com/photo-1556910103-1c02745aae4d?q=80&w=1500');
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        color: white;
+        padding: 100px 0;
+    }
+
+    /* Icon Styling */
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        background-color: #ffc107;
+        color: #d32f2f;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 20px;
+        font-size: 2rem;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover .feature-icon {
+        transform: rotateY(180deg);
+    }
+
+    /* Team Member Styling */
+    .team-card {
+        border: none;
+        transition: 0.3s;
+    }
+
+    .team-img {
+        width: 150px;
+        height: 150px;
+        object-fit: cover;
+        border: 5px solid #ffc107;
+    }
+
+    /* Stats Section */
+    .stat-box {
+        border-right: 2px solid #ffc107;
+    }
+
+        .stat-box:last-child {
+            border-right: none;
+        }
+</style>
+
+<div class="about-header text-center shadow-lg">
+    <div class="container">
+        <h1 class="display-3 fw-bold">Our <span class="text-warning">Story</span></h1>
+        <p class="lead fs-4">Turning your kitchen ingredients into culinary masterpieces.</p>
+    </div>
+</div>
+
+<div class="container my-5 py-5">
+    <div class="row align-items-center mb-5 pb-5">
+        <div class="col-md-6 order-md-1 order-2">
+            <h2 class="fw-bold text-danger mb-3">What is <span class="text-warning">QuickCook?</span></h2>
+            <p class="text-muted fs-5">
+                Born out of the frustration of "nothing to eat" while having a full fridge, QuickCook was created to bridge the gap between ingredients and inspiration.
+            </p>
+            <p class="text-muted">
+                We believe that great cooking shouldn't require a trip to the grocery store. By entering what you already have, we unlock thousands of potential meals, helping you save money and reduce food waste.
+            </p>
+            <button class="btn btn-danger btn-lg mt-3 shadow">Explore Our Recipes</button>
+        </div>
+        <div class="col-md-6 order-md-2 order-1 text-center mb-4 mb-md-0">
+            <div class="position-relative">
+                <img src="https://images.unsplash.com/photo-1490645935967-10de6ba17061?w=600" class="img-fluid rounded-4 shadow-lg border-5 border-warning" alt="Cooking">
+                <div class="position-absolute bottom-0 start-0 bg-warning text-danger p-3 rounded-end fw-bold shadow">
+                    Est. 2026
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row bg-light rounded-4 p-5 text-center shadow-sm mb-5 border-top border-warning border-3">
+        <div class="col-md-3 stat-box">
+            <h2 class="fw-bold text-danger">5K+</h2>
+            <p class="text-muted mb-0">Recipes</p>
+        </div>
+        <div class="col-md-3 stat-box">
+            <h2 class="fw-bold text-danger">10K+</h2>
+            <p class="text-muted mb-0">Happy Users</p>
+        </div>
+        <div class="col-md-3 stat-box">
+            <h2 class="fw-bold text-danger">100%</h2>
+            <p class="text-muted mb-0">Pure Veg Filters</p>
+        </div>
+        <div class="col-md-3 stat-box">
+            <h2 class="fw-bold text-danger">24/7</h2>
+            <p class="text-muted mb-0">Admin Support</p>
+        </div>
+    </div>
+
+    <div class="row text-center mt-5">
+        <h2 class="fw-bold mb-5">Why Choose <span class="text-danger">Us?</span></h2>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 shadow-sm border-0">
+                <div class="feature-icon"><i class="bi bi-search"></i></div>
+                <h4 class="fw-bold">Smart Search</h4>
+                <p class="text-muted">Enter ingredients you have, and we'll tell you what you can make instantly.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 shadow-sm border-0">
+                <div class="feature-icon"><i class="bi bi-shield-check"></i></div>
+                <h4 class="fw-bold">Verified Recipes</h4>
+                <p class="text-muted">Every recipe is reviewed by our admins to ensure quality and taste.</p>
+            </div>
+        </div>
+        <div class="col-md-4 mb-4">
+            <div class="card h-100 p-4 shadow-sm border-0">
+                <div class="feature-icon"><i class="bi bi-lightning-charge"></i></div>
+                <h4 class="fw-bold">Quick Meals</h4>
+                <p class="text-muted">Filter by preparation time to find meals that fit your busy schedule.</p>
+            </div>
+        </div>
+    </div>
+
+    @* <div class="row mt-5 py-5 text-center">
+        <h2 class="fw-bold mb-5">Meet the <span class="text-danger">Creators</span></h2>
+        <div class="col-md-4">
+            <div class="team-card card p-3 shadow-none">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="team-img rounded-circle mx-auto mb-3" alt="Team Member">
+                <h5 class="fw-bold">Mansi</h5>
+                <p class="text-danger fw-semibold">Lead Developer</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="team-card card p-3 shadow-none">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="team-img rounded-circle mx-auto mb-3" alt="Team Member">
+                <h5 class="fw-bold">Member 2</h5>
+                <p class="text-danger fw-semibold">UI/UX Designer</p>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="team-card card p-3 shadow-none">
+                <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png" class="team-img rounded-circle mx-auto mb-3" alt="Team Member">
+                <h5 class="fw-bold">Member 3</h5>
+                <p class="text-danger fw-semibold">Database Manager</p>
+            </div>
+        </div>
+    </div> *@
+</div>
+
+@* <div class="bg-warning text-danger text-center py-5 shadow-inner">
+    <div class="container">
+        <h2 class="fw-bold">Ready to Start Cooking?</h2>
+        <p class="fs-5 mb-4">Join our community today and never worry about dinner again.</p>
+        <a asp-controller="User" asp-action="Index" class="btn btn-danger btn-lg px-5 rounded-pill shadow">Get Started</a>
+    </div>
+</div> *@
