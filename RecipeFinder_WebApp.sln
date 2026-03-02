@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.14.36623.8 d17.14
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RecipeFinder_WebApp", "RecipeFinder_WebApp.csproj", "{6A6E79E5-1762-4F06-B24F-2994E0549BB5}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6A6E79E5-1762-4F06-B24F-2994E0549BB5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A6E79E5-1762-4F06-B24F-2994E0549BB5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A6E79E5-1762-4F06-B24F-2994E0549BB5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A6E79E5-1762-4F06-B24F-2994E0549BB5}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F21F6E67-CE80-4A2C-BD8F-915DC9CAF22F}
+	EndGlobalSection
+EndGlobal
