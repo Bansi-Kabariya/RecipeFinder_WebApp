@@ -1,0 +1,82 @@
+﻿@model RecipeFinder_WebApp.Models.Recipes
+@{
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-4">
+    <div class="card shadow-sm border-0">
+        <div class="card-header bg-danger text-white py-3">
+            <h4 class="mb-0">Add New Recipe</h4>
+        </div>
+        <div class="card-body p-4">
+            <form asp-action="CreateRecipe" method="post" enctype="multipart/form-data">
+                @Html.AntiForgeryToken()
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label asp-for="RecipeName" class="form-label fw-bold">Recipe Name</label>
+                        <input asp-for="RecipeName" class="form-control" placeholder="Enter name..." />
+                        <span asp-validation-for="RecipeName" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label class="form-label fw-bold">Category</label>
+                        @* Matches CategoriesId in your Recipes.cs model *@
+                        <select asp-for="CategoriesId" class="form-select"
+                                asp-items="@(new SelectList(ViewBag.Categories, "CategoriesId", "Name"))">
+                            <option value="">-- Select Category --</option>
+                        </select>
+                        <span asp-validation-for="CategoriesId" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label fw-bold"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <div class="mb-3">
+                    <label asp-for="Instructions" class="form-label fw-bold"></label>
+                    <textarea asp-for="Instructions" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Instructions" class="text-danger"></span>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="CookingTime" class="form-label fw-bold">Cooking Time (Mins)</label>
+                        <input asp-for="CookingTime" type="number" class="form-control" />
+                        <span asp-validation-for="CookingTime" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Calories" class="form-label fw-bold"></label>
+                        <input asp-for="Calories" type="number" class="form-control" />
+                        <span asp-validation-for="Calories" class="text-danger"></span>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label asp-for="Servings" class="form-label fw-bold"></label>
+                        <input asp-for="Servings" type="number" class="form-control" />
+                        <span asp-validation-for="Servings" class="text-danger"></span>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label class="form-label fw-bold">Upload Photo</label>
+                    <input type="file" name="ImageFile" class="form-control" accept="image/*" />
+                </div>
+
+                <hr />
+                <div class="d-flex gap-2">
+                    <button type="submit" class="btn btn-warning px-5 fw-bold text-dark">Save Recipe</button>
+                    <a asp-action="Recipes" class="btn btn-outline-secondary px-4">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
