@@ -1,0 +1,27 @@
+﻿@{
+    Layout = null; // Use null if you don't want the main nav bar on the login page
+}
+
+<div style="max-width: 400px; margin: 100px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: sans-serif;">
+    <h2 style="color: #d32f2f; text-align: center;">QuickCook Admin</h2>
+
+    <form asp-action="Login" method="post">
+        <div style="margin-bottom: 15px;">
+            <label>Email</label>
+            <input type="email" name="email" class="form-control" style="width: 100%; padding: 8px;" required />
+        </div>
+        <div style="margin-bottom: 15px;">
+            <label>Password</label>
+            <input type="password" name="password" class="form-control" style="width: 100%; padding: 8px;" required />
+        </div>
+
+        <button type="submit" style="background-color: #ffc107; border: none; width: 100%; padding: 10px; cursor: pointer; font-weight: bold;">
+            Login to Dashboard
+        </button>
+    </form>
+
+    @if (ViewBag.ErrorMessage != null)
+    {
+        <p style="color: red; margin-top: 10px; text-align: center;">@ViewBag.ErrorMessage</p>
+    }
+</div>
