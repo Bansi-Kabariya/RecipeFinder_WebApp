@@ -1,27 +1,86 @@
 ﻿@{
-    Layout = null; // Use null if you don't want the main nav bar on the login page
+    Layout = null;
 }
+<!DOCTYPE html>
+<html>
+<head>
+    <title>QuickCook Admin - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #e53935 0%, #ffb300 100%);
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+        }
 
-<div style="max-width: 400px; margin: 100px auto; padding: 20px; border: 1px solid #ddd; border-radius: 10px; font-family: sans-serif;">
-    <h2 style="color: #d32f2f; text-align: center;">QuickCook Admin</h2>
+        .login-card {
+            background: white;
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            width: 100%;
+            max-width: 420px;
+            text-align: center;
+        }
 
-    <form asp-action="Login" method="post">
-        <div style="margin-bottom: 15px;">
-            <label>Email</label>
-            <input type="email" name="email" class="form-control" style="width: 100%; padding: 8px;" required />
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label>Password</label>
-            <input type="password" name="password" class="form-control" style="width: 100%; padding: 8px;" required />
-        </div>
+        .shield-icon {
+            color: #d32f2f;
+            font-size: 50px;
+            border: 2px solid #d32f2f;
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 15px;
+        }
 
-        <button type="submit" style="background-color: #ffc107; border: none; width: 100%; padding: 10px; cursor: pointer; font-weight: bold;">
-            Login to Dashboard
-        </button>
-    </form>
+        .form-control {
+            border: 1.5px solid #ffc107;
+            border-radius: 8px;
+            padding: 12px;
+        }
 
-    @if (ViewBag.ErrorMessage != null)
-    {
-        <p style="color: red; margin-top: 10px; text-align: center;">@ViewBag.ErrorMessage</p>
-    }
-</div>
+        .btn-login {
+            background-color: #d32f2f;
+            color: white;
+            border: none;
+            width: 100%;
+            padding: 12px;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 15px;
+        }
+
+            .btn-login:hover {
+                background: #b71c1c;
+                color: white;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-card">
+        <div class="shield-icon">🛡️</div>
+        <h3 class="fw-bold" style="color: #d32f2f;">QuickCook Admin</h3>
+        <p class="text-muted small">Login to access the admin dashboard</p>
+        <hr style="border-top: 2px solid #ffc107; opacity: 1;">
+
+        <form asp-action="Login" method="post" class="text-start mt-4">
+            <div class="mb-3">
+                <label class="small fw-bold mb-1">Username</label>
+                <input type="email" name="email" class="form-control" placeholder="Enter your username" required>
+            </div>
+            <div class="mb-4">
+                <label class="small fw-bold mb-1">Password</label>
+                <input type="password" name="password" class="form-control" placeholder="Enter your password" required>
+            </div>
+            <button type="submit" class="btn-login">Login</button>
+        </form>
+    </div>
+</body>
+</html>

@@ -1,23 +1,21 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using RecipeFinder_WebApp.Models;
+using System.ComponentModel.DataAnnotations;
+
+namespace RecipeFinder_WebApp.Models;
 
 public class Reviews
 {
     [Key]
     public int ReviewId { get; set; }
 
-    [Required]
+    // Foreign Keys
+    public int RecipeId { get; set; }
     public int UserId { get; set; }
 
-    [Required]
-    public int RecipeId { get; set; }
+    // Navigation Properties (These are what we 'Include')
+    public virtual Recipes Recipe { get; set; }
+    public virtual User User { get; set; }
 
-    [Required]
-    [Range(1, 5)]
     public int Rating { get; set; }
-
-    [Required]
-    [StringLength(500)]
     public string Comment { get; set; }
-
-    public DateTime CreatedAt { get; set; } = DateTime.Now;
 }

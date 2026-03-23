@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
+namespace RecipeFinder_WebApp.Models;
+
 public class User
 {
     [Key]

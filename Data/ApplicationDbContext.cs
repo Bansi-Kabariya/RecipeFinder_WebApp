@@ -1,11 +1,14 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using RecipeFinder_WebApp.Models;
+
+namespace RecipeFinder_WebApp.Data;
 
 public class ApplicationDbContext : DbContext
 {
     public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) { }
 
     public DbSet<User> Users { get; set; }
-
+            
     public DbSet<Categories> Categories { get; set; }
 
     public DbSet<Recipes> Recipes { get; set; }
