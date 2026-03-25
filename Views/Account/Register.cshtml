@@ -1,0 +1,75 @@
+@{
+ Layout = "_Layout";
+}
+
+<div class="container py-5">
+ <div class="row justify-content-center">
+ <div class="col-lg-10">
+ <div class="card shadow rounded-4 overflow-hidden">
+ <div class="row g-0">
+ <div class="col-md-6 p-5">
+ <div class="mb-4 d-flex align-items-center gap-3">
+ <div class="bg-danger text-white rounded p-2"><i class="bi bi-egg-fried"></i></div>
+ <div>
+ <h4 class="fw-bold mb-0">QuickCook</h4>
+ <div class="text-muted small">Create Account</div>
+ </div>
+ </div>
+ <form asp-action="Register" asp-controller="Account" method="post" enctype="multipart/form-data">
+ @Html.AntiForgeryToken()
+ <div class="mb-3">
+ <input type="text" name="fullName" class="form-control rounded-3" placeholder="Full Name" />
+ </div>
+ <div class="mb-3">
+ <input type="email" name="email" class="form-control rounded-3" placeholder="Email" />
+ </div>
+ <div class="mb-3">
+ <input type="text" name="mobile" class="form-control rounded-3" placeholder="Mobile Number" />
+ </div>
+ <div class="row g-3 mb-3">
+ <div class="col-md-4">
+ <select name="gender" class="form-select rounded-3">
+ <option selected>Gender</option>
+ <option>Male</option>
+ <option>Female</option>
+ <option>Other</option>
+ </select>
+ </div>
+ <div class="col-md-8">
+ <input type="text" name="address" class="form-control rounded-3" placeholder="Address" />
+ </div>
+ </div>
+ <div class="mb-3">
+ <input type="password" name="password" class="form-control rounded-3" placeholder="Password" />
+ </div>
+ <div class="mb-3">
+ <input type="password" name="confirmPassword" class="form-control rounded-3" placeholder="Confirm Password" />
+ </div>
+ <div class="mb-3">
+ <input type="file" name="profilePicture" class="form-control" />
+ </div>
+ <div class="mb-3 form-check">
+ <input type="checkbox" class="form-check-input" id="terms" />
+ <label class="form-check-label small" for="terms">I agree to Terms &amp; Conditions</label>
+ </div>
+ <div class="mb-3 text-end">
+ <button class="btn btn-warning text-danger w-100 rounded-3">Sign Up</button>
+ </div>
+ <div>
+ <small>Already have an account? <a asp-controller="Account" asp-action="Login">Login</a></small>
+ </div>
+ </form>
+ </div>
+                    <div class="col-md-6" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c');background-size:cover;background-position:center; min-height:520px;">
+ <div class="h-100 d-flex align-items-center justify-content-center text-white text-center p-4" style="background: rgba(0,0,0,0.12);">
+ <div>
+ <h3 class="fw-bold">Create your cooking story</h3>
+ <p>Join QuickCook to save and share your favorite recipes.</p>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>

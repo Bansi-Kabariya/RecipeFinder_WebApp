@@ -1,0 +1,125 @@
+@{
+ Layout = "_Layout";
+}
+
+<div class="container py-5">
+ <div class="mb-4">
+ <a asp-controller="User" asp-action="Index" class="btn btn-outline-secondary btn-sm">&lt; Back to Home</a>
+ </div>
+ <h2 class="fw-bold mb-3">All <span class="text-danger">Recipes</span> <small class="text-muted">(8)</small></h2>
+
+ <div class="row g-3 mb-4">
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/1.svg');height:180px;background-size:cover;background-position:center"></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Bhakhri</h5>
+ <p class="text-muted small">Traditional Gujarati crispy flatbread made from wheat flour. Perfect for breakfast...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-warning">Breakfast</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Bhakhri" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/2.svg');height:180px;background-size:cover;background-position:center"></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Gujarati Thali</h5>
+ <p class="text-muted small">A wholesome platter of traditional Gujarati dishes with balanced flavors. Includes roti, dal...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-info">Lunch</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Gujarati Thali" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/3.svg');height:180px;background-size:cover;background-position:center"></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Pav Bhaji</h5>
+ <p class="text-muted small">A spicy mashed vegetable curry served with buttery toasted pav. A popular and comforting street food...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-danger">Dinner</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Pav Bhaji" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/4.svg');height:180px;background-size:cover;background-position:center"></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Oreo Cupcake</h5>
+ <p class="text-muted small">A soft and chocolaty cupcake made with Oreo biscuits. A quick and delicious dessert...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-secondary">Desserts</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Oreo Cupcake" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/1.svg');height:180px;background-size:cover;background-position:center'></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Uttapam</h5>
+ <p class="text-muted small">A soft and thick South Indian pancake topped with vegetables. A healthy and satiating breakfast option...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-warning">Breakfast</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Uttapam" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/2.svg');height:180px;background-size:cover;background-position:center'></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Brownie with Ice Cream</h5>
+ <p class="text-muted small">A rich and fudgy chocolate brownie served with creamy ice cream. A perfect dessert for chocoholics...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-secondary">Desserts</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Brownie with Ice Cream" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/3.svg');height:180px;background-size:cover;background-position:center'></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Sushi</h5>
+ <p class="text-muted small">A traditional Japanese dish made with seasoned rice and fresh fillings. A light and elegant choice...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-info">Lunch</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Sushi" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ <div class="col-md-6 col-lg-4">
+ <div class="card shadow-sm">
+ <div style="background-image:url('/images/recipes/4.svg');height:180px;background-size:cover;background-position:center'></div>
+ <div class="card-body">
+ <h5 class="fw-bold">Manchurian</h5>
+ <p class="text-muted small">A popular Indo-Chinese dish made with fried vegetable balls in spicy sauce. A delicious crowd-pleaser...</p>
+ <div class="d-flex justify-content-between align-items-center">
+ <span class="badge bg-danger">Dinner</span>
+ <a asp-controller="Recipe" asp-action="Details" asp-route-name="Manchurian" class="btn btn-sm btn-warning text-dark">View</a>
+ </div>
+ </div>
+ </div>
+ </div>
+
+ </div>
+</div>

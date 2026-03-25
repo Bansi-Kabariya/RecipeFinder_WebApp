@@ -60,6 +60,18 @@
         margin: 0 auto 1.5rem;
         font-size: 2rem;
     }
+
+    /* Latest recipes */
+    .recipe-card {
+        border-radius: 12px;
+        overflow: hidden;
+        border: 1px solid #eee;
+        background: #fff;
+    }
+    .recipe-card .img-wrap { height: 160px; background-size: cover; background-position: center; }
+    .recipe-card .card-body { padding: 1rem; }
+    .recipe-badge { font-size: 0.75rem; padding: 0.25rem 0.6rem; border-radius: 999px; }
+    .view-recipe-btn { background: #ffc107; color: #b42b2b; border-radius: 6px; }
 </style>
 
 <div class="hero-section">
@@ -120,6 +132,76 @@
                 <a asp-controller="Recipe" asp-action="Category" asp-route-id="Desserts" class="btn btn-outline-secondary btn-sm rounded-pill px-4 mt-2">View Recipes</a>
             </div>
         </div>
+    </div>
+</div>
+
+<!-- Latest Recipes Section -->
+<div class="container py-5">
+    <div class="text-center mb-4">
+        <h3 class="fw-bold">Latest <span class="text-danger">Recipes</span></h3>
+        <p class="text-muted">Total Recipes: 8</p>
+    </div>
+
+    <div class="row g-4 mb-4">
+        <div class="col-md-3">
+            <div class="recipe-card shadow-sm">
+                <div class="img-wrap" style="background-image:url('/images/recipes/1.svg');"></div>
+                <div class="card-body">
+                    <h5 class="fw-bold mb-1">Bhakhri</h5>
+                    <p class="text-muted small mb-2">Traditional Gujarati crispy flatbread made ...</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge recipe-badge bg-warning text-white">Breakfast</span>
+                        <a asp-controller="Admin" asp-action="RecipeDetails" asp-route-name="Bhakhri" class="btn btn-sm view-recipe-btn">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="recipe-card shadow-sm">
+                <div class="img-wrap" style="background-image:url('/images/recipes/2.svg');"></div>
+                <div class="card-body">
+                    <h5 class="fw-bold mb-1">Gujarati Thali</h5>
+                    <p class="text-muted small mb-2">A wholesome platter of traditional Gujarati ...</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge recipe-badge bg-info text-white">Lunch</span>
+                        <a asp-controller="Admin" asp-action="RecipeDetails" asp-route-name="Gujarati Thali" class="btn btn-sm view-recipe-btn">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="recipe-card shadow-sm">
+                <div class="img-wrap" style="background-image:url('/images/recipes/3.svg');"></div>
+                <div class="card-body">
+                    <h5 class="fw-bold mb-1">Pav Bhaji</h5>
+                    <p class="text-muted small mb-2">A spicy mashed vegetable curry served with ...</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge recipe-badge bg-warning text-white">Dinner</span>
+                        <a asp-controller="Admin" asp-action="RecipeDetails" asp-route-name="Pav Bhaji" class="btn btn-sm view-recipe-btn">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-3">
+            <div class="recipe-card shadow-sm">
+                <div class="img-wrap" style="background-image:url('/images/recipes/4.svg');"></div>
+                <div class="card-body">
+                    <h5 class="fw-bold mb-1">Oreo Cupcake</h5>
+                    <p class="text-muted small mb-2">A soft and chocolaty cupcake made with ...</p>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <span class="badge recipe-badge bg-secondary text-white">Desserts</span>
+                        <a asp-controller="Admin" asp-action="RecipeDetails" asp-route-name="Oreo Cupcake" class="btn btn-sm view-recipe-btn">View Recipe</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="text-center">
+        <a asp-controller="Recipe" asp-action="Index" class="btn btn-danger rounded-pill px-4 py-2">All Recipes <span class="badge bg-warning text-dark ms-2">8</span></a>
     </div>
 </div>
 

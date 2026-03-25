@@ -1,0 +1,130 @@
+﻿@{
+ Layout = "_Layout";
+}
+
+<div class="container py-5">
+ <div class="row justify-content-center">
+ <div class="col-lg-10">
+ <div class="card shadow rounded-4 overflow-hidden">
+ <div class="row g-0">
+ <div class="col-md-5 text-white d-flex align-items-center justify-content-center" style="background: rgba(220,53,69,0.9); min-height:360px;">
+ <div class="text-center px-4">
+                            <div class="display-6">👨‍🍳</div>
+ <h2 class="fw-bold">QuickCook</h2>
+ <p>Your feedback is the secret ingredient to our success!</p>
+ </div>
+ </div>
+ <div class="col-md-7 p-4">
+ <h3 class="fw-bold mb-4">Rate Your Experience</h3>
+ <form asp-action="Feedback" method="post">
+ @Html.AntiForgeryToken()
+ <div class="row g-3">
+ <div class="col-md-6">
+ <label class="form-label small fw-bold">Your Name</label>
+ <input type="text" name="name" class="form-control rounded-3" placeholder="Enter name" />
+ </div>
+ <div class="col-md-6">
+ <label class="form-label small fw-bold">Email Address</label>
+ <input type="email" name="email" class="form-control rounded-3" placeholder="Enter email" />
+ </div>
+
+ <div class="col-12 mt-3">
+ <label class="form-label fw-bold small text-uppercase">How was the experience?</label>
+
+ <input type="hidden" id="ratingInput" name="rating" value="" />
+
+ <div id="emojiGroup" class="d-flex gap-3 align-items-center bg-light p-3 rounded-3" style="border-radius:10px;">
+ <button type="button" class="btn emoji-btn fs-2 p-0" data-rating="1" aria-label="Rate1" aria-pressed="false">😞</button>
+ <button type="button" class="btn emoji-btn fs-2 p-0" data-rating="2" aria-label="Rate2" aria-pressed="false">😐</button>
+ <button type="button" class="btn emoji-btn fs-2 p-0" data-rating="3" aria-label="Rate3" aria-pressed="false">🙂</button>
+ <button type="button" class="btn emoji-btn fs-2 p-0" data-rating="4" aria-label="Rate4" aria-pressed="false">😊</button>
+ <button type="button" class="btn emoji-btn fs-2 p-0" data-rating="5" aria-label="Rate5" aria-pressed="false">😍</button>
+ </div>
+ </div>
+
+ <div class="col-12">
+ <label class="form-label small fw-bold">Message</label>
+ <textarea name="message" class="form-control rounded-3" rows="4" placeholder="What can we improve?"></textarea>
+ </div>
+ <div class="col-12 text-end mt-3">
+ <button type="submit" class="btn btn-warning text-danger rounded-3 px-4">Send Feedback ??</button>
+ </div>
+ </div>
+ </form>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>
+
+@section Scripts {
+ <style>
+ .emoji-btn {
+ background: transparent;
+ border: none;
+ width:48px;
+ height:48px;
+ display: inline-flex;
+ align-items: center;
+ justify-content: center;
+ border-radius:8px;
+ cursor: pointer;
+ transition: transform0.12s ease, box-shadow0.12s ease;
+ user-select: none;
+ }
+
+ .emoji-btn:hover {
+ transform: translateY(-3px);
+ }
+
+ .emoji-btn.active {
+ box-shadow:04px12px rgba(0,0,0,0.12);
+ background: linear-gradient(90deg,#ffd166,#ff7b54);
+ color: #fff;
+ transform: translateY(-4px) scale(1.05);
+ }
+ </style>
+
+ <script>
+ (function () {
+ var group = document.getElementById('emojiGroup');
+ if (!group) return;
+ var buttons = group.querySelectorAll('.emoji-btn');
+ var input = document.getElementById('ratingInput');
+
+ function setActive(button) {
+ buttons.forEach(function (b) {
+ b.classList.remove('active');
+ b.setAttribute('aria-pressed', 'false');
+ });
+ if (button) {
+ button.classList.add('active');
+ button.setAttribute('aria-pressed', 'true');
+ var val = button.getAttribute('data-rating') || '';
+ input.value = val;
+ } else {
+ input.value = '';
+ }
+ }
+
+ buttons.forEach(function (btn) {
+ btn.addEventListener('click', function (e) {
+ setActive(btn);
+ });
+ btn.addEventListener('keydown', function (e) {
+ if (e.key === 'Enter' || e.key === ' ') {
+ e.preventDefault();
+ setActive(btn);
+ }
+ });
+ });
+
+ // Optionally preselect if value present
+ if (input.value) {
+ var pre = group.querySelector('[data-rating="' + input.value + '"]');
+ if (pre) setActive(pre);
+ }
+ })();
+ </script>
+}

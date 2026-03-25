@@ -123,12 +123,12 @@
             <a class="nav-link @(ViewContext.RouteData.Values["Action"].ToString() == "Recipes" ? "active" : "")" asp-action="Recipes">
                 <i class="bi bi-book"></i> Recipes
             </a>
-            <a class="nav-link" href="#"><i class="bi bi-people"></i> Users</a>
-            <a class="nav-link" href="#"><i class="bi bi-tags"></i> Categories</a>
-            <a class="nav-link" href="#"><i class="bi bi-chat-dots"></i> Feedback</a>
-            <a class="nav-link" href="#"><i class="bi bi-envelope"></i> Contact Messages</a>
+            <a class="nav-link" asp-action="Users"><i class="bi bi-people"></i> Users</a>
+            <a class="nav-link" asp-action="Categories"><i class="bi bi-tags"></i> Categories</a>
+            <a class="nav-link" asp-action="Feedback"><i class="bi bi-chat-dots"></i> Feedback</a>
+            <a class="nav-link" asp-action="ContactMessages"><i class="bi bi-envelope"></i> Contact Messages</a>
             <a class="nav-link" href="#"><i class="bi bi-gear"></i> Settings</a>
-            <a class="nav-link" asp-controller="Home" asp-action="Index">
+            <a class="nav-link" asp-controller="User" asp-action="Index">
                 <i class="bi bi-house-door"></i> Go to User Side
             </a>
         </nav>
@@ -141,7 +141,7 @@
         <div class="top-navbar">
             <img src="/images/logo.png" height="35" onerror="this.style.display='none'">
             <div class="d-flex align-items-center gap-4">
-                <a href="/" class="user-pill"><i class="bi bi-house"></i> User Side</a>
+                <a asp-controller="User" asp-action="Index" class="user-pill"><i class="bi bi-house"></i> User Side</a>
                 <div class="d-flex align-items-center">
                     <div class="text-end me-2">
                         <div class="fw-bold small">Admin</div>

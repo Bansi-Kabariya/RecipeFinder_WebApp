@@ -1,0 +1,55 @@
+@model string
+@{
+ Layout = "_Layout";
+ var name = Model ?? "Recipe";
+}
+
+<div class="container py-5">
+ <a asp-controller="User" asp-action="Index" class="btn btn-outline-secondary btn-sm mb-3">&lt; Back to Home</a>
+ <div class="row">
+ <div class="col-md-4 text-center">
+ <img src="/images/recipes/1.svg" class="img-fluid rounded mb-3" style="max-width:260px;" />
+ </div>
+ <div class="col-md-8">
+ <h2 class="fw-bold">@name</h2>
+ <p class="text-muted">A wholesome platter of traditional Gujarati dishes with balanced flavors. Includes roti, sabzi, dal, rice, and sweets for a complete meal.</p>
+ <div class="mb-3">
+ <span class="badge bg-success me-2">Lunch</span>
+ <span class="me-3"><i class="bi bi-clock"></i> Cooking Time:60 mins</span>
+ <span class="me-3"><i class="bi bi-people"></i> Servings:4</span>
+ <span class="me-3"><i class="bi bi-list-check"></i> Difficulty: Hard</span>
+ </div>
+
+ <hr />
+ <h5 class="fw-bold">Ingredients</h5>
+ <ul class="list-group mb-4">
+ <li class="list-group-item">2 cups wheat flour (for roti)</li>
+ <li class="list-group-item">1 cup rice</li>
+ <li class="list-group-item">1 cup toor dal</li>
+ <li class="list-group-item">2 cups mixed vegetables</li>
+ <li class="list-group-item">1 cup curd</li>
+ <li class="list-group-item">2 tbsp ghee</li>
+ <li class="list-group-item">Pickle as needed</li>
+ <li class="list-group-item">Papad</li>
+ <li class="list-group-item">Jaggery</li>
+ <li class="list-group-item">Spices (turmeric, cumin, mustard seeds, salt)</li>
+ <li class="list-group-item">Oil as needed</li>
+ </ul>
+
+ <h5 class="fw-bold">Instructions</h5>
+ <div class="card p-3 mb-3">
+ <ol class="mb-0">
+ <li>Prepare dough and make rotis.</li>
+ <li>Cook rice separately.</li>
+ <li>Prepare dal with spices and tempering.</li>
+ <li>Cook mixed vegetable sabzi.</li>
+ <li>Fry or roast papad.</li>
+ <li>Arrange roti, rice, dal, sabzi, curd, pickle, and sweet on a plate.</li>
+ <li>Serve with ghee and enjoy.</li>
+ </ol>
+ </div>
+
+ <a asp-controller="User" asp-action="Feedback" class="btn btn-warning text-dark">Send Your Feedback</a>
+ </div>
+ </div>
+</div>

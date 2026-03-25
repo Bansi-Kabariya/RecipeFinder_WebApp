@@ -4,6 +4,7 @@ using RecipeFinder_WebApp.Data;
 using RecipeFinder_WebApp.Models;
 using Microsoft.AspNetCore.Http;
 using System.IO;
+using System.Collections.Generic;
 
 namespace RecipeFinder_WebApp.Controllers
 {
@@ -16,12 +17,8 @@ namespace RecipeFinder_WebApp.Controllers
             _context = context;
         }
 
-        // --- LOGIN & AUTH ---
-
-        // GET: Admin/Index (This is the Login Page)
         public IActionResult Index()
         {
-            // If already logged in, go straight to dashboard
             if (HttpContext.Session.GetString("AdminLoggedIn") == "true")
                 return RedirectToAction("Dashboard");
 
@@ -31,7 +28,6 @@ namespace RecipeFinder_WebApp.Controllers
         [HttpPost]
         public IActionResult Login(string email, string password)
         {
-            // Update these credentials as needed
             if (email == "admin@quickcook.com" && password == "admin123")
             {
                 HttpContext.Session.SetString("AdminLoggedIn", "true");
@@ -47,49 +43,64 @@ namespace RecipeFinder_WebApp.Controllers
             HttpContext.Session.Clear();
             return RedirectToAction("Index");
         }
-
-        // --- DASHBOARD ---
         public async Task<IActionResult> Dashboard()
         {
             if (HttpContext.Session.GetString("AdminLoggedIn") != "true") return RedirectToAction("Index");
 
-            ViewBag.TotalRecipes = await _context.Recipes.CountAsync();
-            ViewBag.TotalUsers = await _context.Users.CountAsync();
-            ViewBag.TotalCategories = await _context.Categories.CountAsync();
+            try
+            {
+                ViewBag.TotalRecipes = await _context.Recipes.CountAsync();
+                ViewBag.TotalUsers = await _context.Users.CountAsync();
+                ViewBag.TotalCategories = await _context.Categories.CountAsync();
 
-            var recent = await _context.Recipes
-                .OrderByDescending(x => x.RecipeId)
-                .Take(3)
-                .ToListAsync();
+                var recent = await _context.Recipes
+                    .OrderByDescending(x => x.RecipeId)
+                    .Take(3)
+                    .ToListAsync();
 
-            return View(recent);
+                return View(recent);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.DbError = "Unable to connect to the database. " + ex.Message;
+                ViewBag.TotalRecipes =0;
+                ViewBag.TotalUsers =0;
+                ViewBag.TotalCategories =0;
+
+                return View(new List<Recipes>());
+            }
         }
-
-        // --- RECIPES ---
         public async Task<IActionResult> Recipes()
         {
             if (HttpContext.Session.GetString("AdminLoggedIn") != "true") return RedirectToAction("Index");
 
-            ViewBag.Categories = await _context.Categories.ToListAsync();
-            var recipes = await _context.Recipes.Include(r => r.Categories).ToListAsync();
-            return View(recipes);
+            try
+            {
+                ViewBag.Categories = await _context.Categories.ToListAsync();
+                var recipes = await _context.Recipes.Include(r => r.Categories).ToListAsync();
+                return View(recipes);
+            }
+            catch (Exception ex)
+            {
+                ViewBag.DbError = "Unable to load recipes. " + ex.Message;
+                ViewBag.Categories = new List<Categories>();
+                return View(new List<Recipes>());
+            }
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> CreateRecipe(Recipes recipe, IFormFile ImageFile)
         {
-            // Remove validation for navigation properties to ensure Save works
             ModelState.Remove("Categories");
             ModelState.Remove("ImagePath");
             ModelState.Remove("ImageUrl");
 
-            if (ImageFile != null && ImageFile.Length > 0)
+            if (ImageFile != null && ImageFile.Length >0)
             {
                 string fileName = Guid.NewGuid().ToString() + Path.GetExtension(ImageFile.FileName);
                 string folderPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/images/recipes");
 
-                // Ensure directory exists
                 if (!Directory.Exists(folderPath)) Directory.CreateDirectory(folderPath);
 
                 string filePath = Path.Combine(folderPath, fileName);
@@ -98,21 +109,16 @@ namespace RecipeFinder_WebApp.Controllers
                     await ImageFile.CopyToAsync(stream);
                 }
                 recipe.ImagePath = "/images/recipes/" + fileName;
-                recipe.ImageUrl = recipe.ImagePath; // Syncing both fields
+                recipe.ImageUrl = recipe.ImagePath; 
             }
 
             _context.Recipes.Add(recipe);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Recipes));
         }
-
-        // --- CATEGORIES ---
-        public async Task<IActionResult> Categories()
+        public IActionResult Categories()
         {
-            if (HttpContext.Session.GetString("AdminLoggedIn") != "true") return RedirectToAction("Index");
-
-            var cats = await _context.Categories.ToListAsync();
-            return View(cats);
+            return View();
         }
 
         [HttpPost]
@@ -132,25 +138,62 @@ namespace RecipeFinder_WebApp.Controllers
             if (HttpContext.Session.GetString("AdminLoggedIn") != "true")
                 return RedirectToAction("Index");
 
-            // FIX: Include the Navigation Properties (Objects), not the ID fields
             var reviews = await _context.Reviews
-                .Include(r => r.Recipe)  // Changed from RecipeId
-                .Include(r => r.User)    // Changed from UserId
+                .Include(r => r.Recipe)  
+                .Include(r => r.User)   
                 .ToListAsync();
 
             return View(reviews);
         }
 
-    //    // --- REVIEWS ---
-    //    public async Task<IActionResult> Reviews()
-    //    {
-    //        if (HttpContext.Session.GetString("AdminLoggedIn") != "true") return RedirectToAction("Index");
+        public IActionResult RecipeDetails(string name)
+        {
+            var model = new RecipeFinder_WebApp.Models.Recipes
+            {
+                RecipeId =0,
+                RecipeName = name ?? "Recipe",
+                CategoriesId =0,
+                Description = "This is a static description for the recipe. Replace with real content.",
+                Instructions = "1. Prepare ingredients.\n2. Cook as required.\n3. Serve hot.",
+                Calories =250,
+                CookingTime =30,
+                Servings =2,
+                ImageUrl = "/images/recipes/sample.jpg",
+                ImagePath = "/images/recipes/sample.jpg",
+            };
+            return View(model);
+        }
 
-    //        var reviews = await _context.Reviews
-    //            .Include(r => r.RecipeId)
-    //            .Include(r => r.UserId)
-    //            .ToListAsync();
-    //        return View(reviews);
-    //    }
+        public IActionResult Users()
+        {
+            return View();
+        }
+
+        public IActionResult UserDetails(string name)
+        {
+            var user = new RecipeFinder_WebApp.Models.User
+            {
+                UserId =1,
+                Username = name ?? "Bansi",
+                FullName = name ?? "Bansi Kabariya",
+                Email = "bansi@gmail.com",
+                MobileNumber = "7848745854",
+                Address = "Some Address",
+                Role = "Administrator",
+                ProfilePicture = "/images/users/default.png",
+                CreatedAt = DateTime.Now
+            };
+            return View(user);
+        }
+
+        public IActionResult Feedback()
+        {
+            return View();
+        }
+
+        public IActionResult ContactMessages()
+        {
+            return View();
+        }
     }
 }

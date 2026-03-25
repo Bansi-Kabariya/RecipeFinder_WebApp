@@ -1,0 +1,56 @@
+@{
+ Layout = "_Layout";
+}
+
+<div class="container py-5">
+ <div class="row justify-content-center">
+ <div class="col-lg-10">
+ <div class="card shadow rounded-4 overflow-hidden">
+ <div class="row g-0">
+ <div class="col-md-6 p-5">
+ <div class="mb-4 d-flex align-items-center gap-3">
+ <div class="bg-danger text-white rounded p-2"><i class="bi bi-egg-fried"></i></div>
+ <div>
+ <h4 class="fw-bold mb-0">QuickCook</h4>
+ <div class="text-muted small">Welcome Back!</div>
+ </div>
+ </div>
+ <form asp-action="Login" asp-controller="Account" method="post">
+ @Html.AntiForgeryToken()
+ <div class="mb-3">
+ <input type="email" name="email" class="form-control rounded-3" placeholder="Email Address" />
+ </div>
+ <div class="mb-3">
+ <input type="password" name="password" class="form-control rounded-3" placeholder="Password" />
+ </div>
+ <div class="mb-3">
+ <button class="btn btn-warning text-danger w-100 rounded-3">Sign In</button>
+ </div>
+ <div>
+ <small>Don't have an account? <a asp-controller="Account" asp-action="Register">Sign Up Free</a></small>
+ </div>
+ </form>
+ </div>
+                    <div class="col-md-6" style="background-image:url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c');background-size:cover;background-position:center; min-height:360px;">
+ <div class="h-100 d-flex align-items-center justify-content-center text-white text-center p-4" style="background: rgba(0,0,0,0.25);">
+ <div>
+ <h3 class="fw-bold">Cooking is love made visible.</h3>
+ <p>Cooking is like painting or writing a song. It's how you combine flavors that sets you apart.</p>
+ <div class="d-flex gap-3 justify-content-center mt-3">
+ <div class="bg-white bg-opacity-25 p-3 rounded text-center">
+ <div class="fw-bold">50k+</div>
+ <small>Active Users</small>
+ </div>
+ <div class="bg-white bg-opacity-25 p-3 rounded text-center">
+ <div class="fw-bold">120k</div>
+ <small>Recipes Shared</small>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+ </div>
+</div>

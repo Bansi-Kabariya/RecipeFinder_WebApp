@@ -1,5 +1,4 @@
-﻿@model IEnumerable<RecipeFinder_WebApp.Models.Recipes>
-@{
+﻿@{
     Layout = "_AdminLayout";
 }
 
@@ -19,73 +18,196 @@
                 <tr>
                     <th>RECIPE NAME</th>
                     <th>CATEGORY</th>
-                    <th>COOKING TIME</th>
+                    <th>CREATED DATE</th>
+                    <th>STATUS</th>
                     <th>ACTIONS</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var item in Model)
-                {
-                    <tr>
-                        <td class="fw-bold text-danger">@item.RecipeName</td>
-                        <td>
-                            <span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">
-                                @(item.Categories?.CategoriesName ?? "General")
-                            </span>
-                        </td>
-                        <td class="text-muted">@item.CookingTime mins</td>
-                        <td>
-                            <div class="d-flex gap-2">
-                                <button class="btn btn-sm btn-outline-primary"><i class="bi bi-pencil"></i></button>
-                                <button class="btn btn-sm btn-outline-danger"><i class="bi bi-trash"></i></button>
-                            </div>
-                        </td>
-                    </tr>
-                }
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Bhakhri" })">Bhakhri</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Breakfast</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Gujarati Thali" })">Gujarati Thali</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Lunch</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Pav Bhaji" })">Pav Bhaji</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Dinner</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Oreo Cupcake" })">Oreo Cupcake</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Desserts</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Uttapam" })">Uttapam</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Breakfast</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Brownie with Ice Cream" })">Brownie with Ice Cream</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Desserts</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Sushi" })">Sushi</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Lunch</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fw-bold text-danger"><a href="@Url.Action("RecipeDetails", "Admin", new { name = "Manchurian" })">Manchurian</a></td>
+                    <td><span class="badge rounded-pill bg-info bg-opacity-10 text-info px-3">Dinner</span></td>
+                    <td>18/03/2026</td>
+                    <td><span class="badge bg-success">Published</span></td>
+                    <td>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-sm btn-outline-primary">Edit</button>
+                            <button class="btn btn-sm btn-outline-danger">Delete</button>
+                        </div>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
 </div>
 
 <div class="modal fade" id="addRecipeModal" tabindex="-1" aria-hidden="true">
-    <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable">
         <div class="modal-content border-0 shadow-lg rounded-4">
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title fw-bold text-danger">Add New Recipe</h5>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body p-4">
-                <form asp-action="CreateRecipe" method="post" enctype="multipart/form-data">
+                <form asp-action="CreateRecipe" asp-controller="Admin" method="post" enctype="multipart/form-data">
+                    @Html.AntiForgeryToken()
+
                     <div class="mb-3">
                         <label class="form-label small fw-bold">Recipe Name *</label>
-                        <input type="text" name="RecipeName" class="form-control rounded-3" required>
+                        <input type="text" name="RecipeName" class="form-control rounded-3" placeholder="e.g., Spaghetti Carbonara" required>
                     </div>
-                    <div class="row mb-3">
-                        <div class="col-md-6">
-                            <label class="form-label small fw-bold">Category</label>
-                            <select name="CategoriesId" class="form-select rounded-3">
-                                @foreach (var cat in ViewBag.Categories)
-                                {
-                                    <option value="@cat.CategoriesId">@cat.CategoriesName</option>
-                                }
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Description *</label>
+                        <textarea name="Description" class="form-control rounded-3" rows="2" placeholder="Brief description..." required></textarea>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Category *</label>
+                        <div class="d-flex gap-2 flex-wrap mt-2">
+                            <label class="btn btn-outline-secondary btn-sm rounded-pill">
+                                <input type="radio" name="CategoriesId" value="1" autocomplete="off"> Breakfast
+                            </label>
+                            <label class="btn btn-outline-secondary btn-sm rounded-pill">
+                                <input type="radio" name="CategoriesId" value="2" autocomplete="off"> Lunch
+                            </label>
+                            <label class="btn btn-outline-secondary btn-sm rounded-pill">
+                                <input type="radio" name="CategoriesId" value="3" autocomplete="off"> Dinner
+                            </label>
+                            <label class="btn btn-outline-secondary btn-sm rounded-pill">
+                                <input type="radio" name="CategoriesId" value="4" autocomplete="off"> Desserts
+                            </label>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Cooking Time (min)</label>
+                            <input type="number" name="CookingTime" class="form-control rounded-3" value="30">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Servings</label>
+                            <input type="number" name="Servings" class="form-control rounded-3" value="4">
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label small fw-bold">Difficulty</label>
+                            <select name="Difficulty" class="form-select rounded-3">
+                                <option>Easy</option>
+                                <option selected>Medium</option>
+                                <option>Hard</option>
                             </select>
                         </div>
-                        <div class="col-md-6">
-                            <label class="form-label small fw-bold">Cooking Time (min)</label>
-                            <input type="number" name="CookingTime" class="form-control rounded-3">
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label small fw-bold">Recipe Image</label>
+                        <div class="d-flex align-items-center gap-3">
+                            <input type="file" name="ImageFile" class="form-control-file">
+                            <small class="text-muted">JPG, PNG (max500KB)</small>
                         </div>
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label small fw-bold">Upload Image</label>
-                        <input type="file" name="ImageFile" class="form-control rounded-3">
+                        <label class="form-label small fw-bold">Ingredients *</label>
+                        <textarea name="IngredientsList" class="form-control rounded-3" rows="4" placeholder="One per line">500g Pasta
+2 Eggs</textarea>
+                        <div class="form-text">One per line</div>
                     </div>
+
                     <div class="mb-3">
-                        <label class="form-label small fw-bold">Instructions</label>
-                        <textarea name="Instructions" class="form-control rounded-3" rows="3"></textarea>
+                        <label class="form-label small fw-bold">Steps to Make *</label>
+                        <textarea name="Instructions" class="form-control rounded-3" rows="6" placeholder="Step by step instructions...">1. Prepare ingredients.
+2. Cook as required.
+3. Serve hot.</textarea>
                     </div>
-                    <div class="text-end">
+
+                    <div class="modal-footer border-0 pt-0">
                         <button type="button" class="btn btn-secondary rounded-3" data-bs-dismiss="modal">Cancel</button>
-                        <button type="submit" class="btn btn-warning fw-bold rounded-3 px-4">Save Recipe</button>
+                        <button type="submit" class="btn btn-warning fw-bold rounded-3 px-4">+ Add Recipe</button>
                     </div>
                 </form>
             </div>

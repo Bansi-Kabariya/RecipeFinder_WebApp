@@ -91,9 +91,10 @@
                     </form>
 
                     <div class="d-flex align-items-center ms-lg-3">
-                        <a asp-controller="Admin" asp-action="Index" class="btn btn-warning">Admin</a>
+                        <a href="/Account/Login" class="btn btn-outline-light me-2">Login</a>
+                        <a asp-controller="Admin" asp-action="Index" class="btn btn-warning me-2">Admin</a>
 
-                        <a href="#" class="profile-circle shadow-sm" title="My Profile">
+                        <a asp-controller="User" asp-action="Profile" class="profile-circle shadow-sm d-flex align-items-center justify-content-center" title="My Profile">
                             <i class="bi bi-person-fill"></i>
                         </a>
                     </div>
@@ -125,7 +126,8 @@
                     <div class="mb-3">
                         <a asp-controller="User" asp-action="Index" class="text-white-50 text-decoration-none me-3">Home</a>
                         <a asp-controller="User" asp-action="About" class="text-white-50 text-decoration-none me-3">About</a>
-                        <a asp-controller="User" asp-action="Contact" class="text-white-50 text-decoration-none">Contact</a>
+                        <a asp-controller="User" asp-action="Contact" class="text-white-50 text-decoration-none me-3">Contact</a>
+                        <a asp-controller="User" asp-action="Feedback" class="text-warning text-decoration-none">Feedback</a>
                     </div>
                     <div class="fs-5">
                         <a href="#" class="text-warning me-3"><i class="bi bi-facebook"></i></a>
